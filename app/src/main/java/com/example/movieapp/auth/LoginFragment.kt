@@ -27,17 +27,17 @@ class LoginFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_signUpFragment)
         }
         binding.btnFragmentLogin.setOnClickListener { v ->
-            binding.progressLogin.visibility=View.VISIBLE
-            auth.signInWithEmailAndPassword(
-                binding.edLoginEmail.text.toString(),
-                binding.edLoginPassword.text.toString()
-            ).addOnSuccessListener {
-                binding.progressLogin.visibility=View.GONE
+//            binding.progressLogin.visibility=View.VISIBLE
+//            auth.signInWithEmailAndPassword(
+//                binding.edLoginEmail.text.toString(),
+//                binding.edLoginPassword.text.toString()
+//            ).addOnSuccessListener {
+//                binding.progressLogin.visibility=View.GONE
                 Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_mainFragment)
-            }.addOnFailureListener {
-                Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
-                binding.progressLogin.visibility=View.GONE
-            }
+//            }.addOnFailureListener {
+//                Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+//                binding.progressLogin.visibility=View.GONE
+//            }
         }
         return binding.root
     }
