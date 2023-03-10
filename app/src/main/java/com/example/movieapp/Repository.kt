@@ -14,21 +14,21 @@ class Repository {
     private var apiServices = API.apiServices
 
     suspend fun getPopularMovie(): Flow<State<MovieResponse?>> {
-//        return flow {
-//            val result = apiServices.getPopularMovies(Constants.API_KEY, "en-US")
-//            Log.e("TAG", "3$result")
-//            if (result.isSuccessful) {
-//                emit(requireNotNull(result.body()))
-//            }
-//        }
+
         return wrapWithFlow(apiServices::getPopularMovies)
     }
 
-    private fun <T> wrapWithFlow(function: suspend (String,String) -> Response<T>): Flow<State<T?>> {
+    suspend fun getTopRatedMovie():Flow<State<MovieResponse?>>{
+
+        return wrapWithFlow(apiServices::getTopRatedMovie)
+    }
+
+
+    private fun <T> wrapWithFlow(function: suspend (String) -> Response<T>): Flow<State<T?>> {
         return flow {
             emit(State.Loading)
             try {
-                val result = function(Constants.API_KEY, "en-US")
+                val result = function(Constants.API_KEY)
                 if (result.isSuccessful) {
                     delay(1000)
                     emit(State.Success(result.body()))

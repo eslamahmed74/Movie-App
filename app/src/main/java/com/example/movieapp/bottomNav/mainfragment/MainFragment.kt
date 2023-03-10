@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.RecyclerViewInteractionListener
-import com.example.movieapp.bottomNav.mainfragment.popularmovie.PopularMovieAdapter
+import com.example.movieapp.bottomNav.mainfragment.popularmovie.MovieAdapter
 import com.example.movieapp.bottomNav.mainfragment.popularmovie.PopularMovieViewModel
 import com.example.movieapp.databinding.FragmentMainBinding
 
@@ -30,8 +30,9 @@ class MainFragment : Fragment(), RecyclerViewInteractionListener {
         binding.lifecycleOwner=this
 
         val layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = PopularMovieAdapter(mutableListOf(), this)
+        val layoutManager2 = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        setRecyclerView(binding.recyclerView,layoutManager)
+        setRecyclerView(binding.recyclerViewtopRated,layoutManager2)
         return binding.root
     }
 
@@ -39,4 +40,8 @@ class MainFragment : Fragment(), RecyclerViewInteractionListener {
 
     }
 
+    private fun setRecyclerView(view:RecyclerView,layoutManager: LinearLayoutManager){
+        view.layoutManager=layoutManager
+        view.adapter=MovieAdapter(mutableListOf(),this)
+    }
 }
