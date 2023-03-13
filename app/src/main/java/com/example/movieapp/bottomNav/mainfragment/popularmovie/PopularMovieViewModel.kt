@@ -1,6 +1,5 @@
 package com.example.movieapp.bottomNav.mainfragment.popularmovie
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.Repository
@@ -21,16 +20,23 @@ class PopularMovieViewModel() : ViewModel() {
     private val _popularMovieLiveData = MutableStateFlow<State<MovieResponse?>>(State.Loading)
     val popularMovieLiveData: StateFlow<State<MovieResponse?>>
         get() = _popularMovieLiveData
-    private fun getPopularMovie() {
+
+    private val _topRatedMovieStateFlow = MutableStateFlow<State<MovieResponse?>>(State.Loading)
+    val topRatedMovieStateFlow: StateFlow<State<MovieResponse?>>
+        get() = _topRatedMovieStateFlow
+
+    private fun getMovies() {
         viewModelScope.launch {
             repository.getPopularMovie().collect {
-                _popularMovieLiveData.value=it
-               // Log.e("TAG","2"+_popularMovieLiveData.value.toString())
+                _popularMovieLiveData.value = it
+            }
+            repository.getTopRatedMovie().collect {
+                _topRatedMovieStateFlow.value = it
             }
         }
     }
 
     init {
-        getPopularMovie()
+        getMovies()
     }
 }

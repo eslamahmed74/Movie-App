@@ -5,7 +5,7 @@ import com.example.movieapp.BaseClickListener
 import com.example.movieapp.Movie
 import com.example.movieapp.R
 
-class PopularMovieAdapter(
+class MovieAdapter(
     list: List<Movie>, clickListener: BaseClickListener,
 
     ) : BaseAdapter<Movie>(list, clickListener) {

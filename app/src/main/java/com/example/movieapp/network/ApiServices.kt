@@ -9,15 +9,11 @@ interface ApiServices {
 
     @GET("movie/popular")
     suspend fun getPopularMovies(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String
+        @Query("api_key") apiKey: String
     ): Response<MovieResponse?>
 
-    @GET("/movie/{movie_id}")
-    suspend fun getMovie(
-        @Path("movie_id") movieId: Int,
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String?,
-        @Query("append_to_response") appendToResponse: String?
-    )
+    @GET("movie/top_rated")
+    suspend fun getTopRatedMovie(
+        @Query("api_key") apiKey: String
+    ):Response<MovieResponse?>
 }
