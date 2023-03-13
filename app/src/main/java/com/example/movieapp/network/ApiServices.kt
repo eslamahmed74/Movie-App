@@ -15,5 +15,15 @@ interface ApiServices {
     @GET("movie/top_rated")
     suspend fun getTopRatedMovie(
         @Query("api_key") apiKey: String
-    ):Response<MovieResponse?>
+    ): Response<MovieResponse?>
+
+    @GET("movie/upcoming")
+    suspend fun getUpcomingMovies(
+        @Query("api_key") apiKey: String
+    ): Response<MovieResponse?>
+
+    @GET("/tv/popular")
+    suspend fun getTvPopular(
+        @Query("api_key") apiKey: String
+    ): Response<MovieResponse?>
 }

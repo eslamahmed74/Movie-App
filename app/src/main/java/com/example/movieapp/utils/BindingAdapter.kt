@@ -6,14 +6,12 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.movieapp.utils.BaseAdapter
 import com.example.movieapp.utils.Constants
-import com.squareup.picasso.Picasso
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.example.movieapp.utils.State
 
 @BindingAdapter("app:items")
 fun <T> setRecycleViewItem(view: RecyclerView, item: List<T>?) {
-    Log.e("TAG", item.toString()+"1")
     if (item != null) {
         (view.adapter as BaseAdapter<T>?)?.setItems(item)
     } else {

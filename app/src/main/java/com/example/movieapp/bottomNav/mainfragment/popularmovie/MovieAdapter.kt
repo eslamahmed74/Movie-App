@@ -1,13 +1,19 @@
 package com.example.movieapp.bottomNav.mainfragment.popularmovie
 
-import com.example.movieapp.BaseAdapter
-import com.example.movieapp.BaseClickListener
+import com.example.movieapp.utils.BaseAdapter
+import com.example.movieapp.utils.BaseClickListener
 import com.example.movieapp.Movie
 import com.example.movieapp.R
+import com.example.movieapp.network.MovieResponse
+import com.example.movieapp.network.Result
 
+/*
+view.adapter
+ , clickListener
+ */
 class MovieAdapter(
-    list: List<Movie>, clickListener: BaseClickListener,
+    list: List<Result>
 
-    ) : BaseAdapter<Movie>(list, clickListener) {
+    ) : BaseAdapter<Result>(list) {
     override val layoutId: Int = R.layout.movie_item_popular
 }

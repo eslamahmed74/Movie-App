@@ -1,9 +1,9 @@
 package com.example.movieapp
 
-import android.util.Log
 import com.example.movieapp.network.API
 import com.example.movieapp.network.MovieResponse
 import com.example.movieapp.utils.Constants
+import com.example.movieapp.utils.State
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -23,6 +23,13 @@ class Repository {
         return wrapWithFlow(apiServices::getTopRatedMovie)
     }
 
+    suspend fun getUpComingMovie():Flow<State<MovieResponse?>>{
+        return wrapWithFlow (apiServices::getUpcomingMovies)
+    }
+
+    suspend fun getTvPopular():Flow<State<MovieResponse?>>{
+        return wrapWithFlow (apiServices::getTvPopular)
+    }
 
     private fun <T> wrapWithFlow(function: suspend (String) -> Response<T>): Flow<State<T?>> {
         return flow {
