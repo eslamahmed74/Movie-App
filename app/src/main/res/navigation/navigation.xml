@@ -44,7 +44,7 @@
         android:label="MainFragment" />
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.movieapp.bottomNav.ListFragment"
+        android:name="com.example.movieapp.bottomNav.listfragment.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" />
     <fragment
