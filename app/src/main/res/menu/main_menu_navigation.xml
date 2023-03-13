@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:title="Home" android:id="@+id/item_home" />
-    <item android:title="news" android:id="@+id/item_new" />
-    <item android:title="List" android:id="@+id/item_list" />
+    <item
+        android:id="@+id/mainFragment"
+        android:title="@string/item_home" />
+    <item
+        android:id="@+id/listFragment"
+        android:title="@string/item_list" />
+    <item
+        android:id="@+id/accountFragment"
+        android:title="@string/item_profile" />
 </menu>

@@ -15,4 +15,9 @@
     <string name="dont_have_account">Dont have account?</string>
     <string name="have_account">Already have account?</string>
     <string name="signup">signup</string>
+    <string name="item_profile">Profile</string>
+    <string name="item_list">List</string>
+    <string name="item_home">Home</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="movie_date">Movie Date</string>
 </resources>

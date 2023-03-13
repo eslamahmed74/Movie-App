@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="movieItem"
+            type="com.example.movieapp.network.Result" />
+
+        <variable
+            name="items"
+            type="com.example.movieapp.network.Result" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp"
+        app:cardElevation="@dimen/_17sdp">
+
+        <ImageView
+            android:id="@+id/movie_image"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_100sdp"
+            app:imageUrl="@{movieItem.posterPath}" />
+
+    </androidx.cardview.widget.CardView>
+</layout>
