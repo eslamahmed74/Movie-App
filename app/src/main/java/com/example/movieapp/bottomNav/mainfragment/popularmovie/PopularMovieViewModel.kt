@@ -5,15 +5,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.movieapp.Repository
 import com.example.movieapp.utils.State
 import com.example.movieapp.network.MovieResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PopularMovieViewModel() : ViewModel() {
-
-    private val repository = Repository()
+@HiltViewModel
+class PopularMovieViewModel @Inject constructor(private val repository:Repository) : ViewModel() {
 
 //    private val _popularMovieLiveData = MutableLiveData<MovieResponse>()
 //    val popularMovieLiveData: LiveData<MovieResponse>

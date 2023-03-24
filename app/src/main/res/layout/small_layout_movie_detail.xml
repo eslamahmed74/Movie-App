@@ -35,9 +35,9 @@
             android:layout_width="@dimen/_210sdp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout_buttons"
+            app:layout_constraintBottom_toBottomOf="@+id/movie_image_small_detail"
             app:layout_constraintStart_toEndOf="@+id/movie_image_small_detail"
-            app:layout_constraintTop_toTopOf="@id/movie_image_small_detail">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/movie_title_small_detail"
@@ -75,7 +75,7 @@
             android:gravity="center"
             android:id="@+id/linearLayout_buttons"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/movie_image_small_detail"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout3"
             tools:ignore="NotSibling">
 
             <ImageButton

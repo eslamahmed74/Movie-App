@@ -49,6 +49,7 @@ abstract class BaseAdapter<T>(private var items: List<T>) :
             is ItemViewHolder -> {
                 holder.binding.setVariable(BR.movieItem, current)
                 holder.binding.root.setOnClickListener { onItemClickListener?.invoke(current) }
+                holder.binding.setVariable(BR.movieListItem,current)
             }
         }
     }
