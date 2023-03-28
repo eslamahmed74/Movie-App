@@ -4,8 +4,8 @@ import com.example.movieapp.utils.BaseAdapter
 import com.example.movieapp.utils.BaseClickListener
 import com.example.movieapp.Movie
 import com.example.movieapp.R
-import com.example.movieapp.network.MovieResponse
-import com.example.movieapp.network.Result
+import com.example.network.MovieResponse
+import com.example.network.Result
 
 /*
 view.adapter

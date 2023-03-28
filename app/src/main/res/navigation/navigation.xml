@@ -49,7 +49,7 @@
         tools:layout="@layout/fragment_list" />
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.example.movieapp.bottomNav.AccountFragment"
+        android:name="com.example.movieapp.bottomNav.accountFragment.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
 </navigation>

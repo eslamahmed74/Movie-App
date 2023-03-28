@@ -1,5 +1,6 @@
 package com.example.movieapp.utils
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -31,6 +32,12 @@ abstract class BaseAdapter<T>(private var items: List<T>) :
         items = newList
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateItems(newList: List<T>) {
+        items = newList
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ItemViewHolder(
             DataBindingUtil.inflate(
@@ -49,7 +56,8 @@ abstract class BaseAdapter<T>(private var items: List<T>) :
             is ItemViewHolder -> {
                 holder.binding.setVariable(BR.movieItem, current)
                 holder.binding.root.setOnClickListener { onItemClickListener?.invoke(current) }
-                holder.binding.setVariable(BR.movieListItem,current)
+                holder.binding.setVariable(BR.movieListItem, current)
+                holder.binding.setVariable(BR.settingItems, current)
             }
         }
     }

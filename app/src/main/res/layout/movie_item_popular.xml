@@ -6,11 +6,11 @@
 
         <variable
             name="movieItem"
-            type="com.example.movieapp.network.Result" />
+            type="com.example.network.Result" />
 
         <variable
             name="items"
-            type="com.example.movieapp.network.Result" />
+            type="com.example.network.Result" />
     </data>
 
     <androidx.cardview.widget.CardView

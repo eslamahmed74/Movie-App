@@ -18,8 +18,8 @@ import com.example.movieapp.utils.RecyclerViewInteractionListener
 import com.example.movieapp.bottomNav.mainfragment.popularmovie.MovieAdapter
 import com.example.movieapp.bottomNav.mainfragment.popularmovie.PopularMovieViewModel
 import com.example.movieapp.databinding.FragmentMainBinding
-import com.example.movieapp.network.MovieResponse
-import com.example.movieapp.network.Result
+import com.example.network.MovieResponse
+import com.example.network.Result
 
 class MainFragment : Fragment(), RecyclerViewInteractionListener {
     private lateinit var binding: FragmentMainBinding
@@ -65,7 +65,6 @@ class MainFragment : Fragment(), RecyclerViewInteractionListener {
             bundle.putString("movieTitle",it.title)
             bundle.putString("imageUrl",it.posterPath)
             bundle.putString("movieDescription",it.overview)
-            Toast.makeText(requireContext(), it.title,Toast.LENGTH_SHORT).show()
             val bottomSheetFragment = BottomSheetFragment()
             bottomSheetFragment.arguments=bundle
             bottomSheetFragment.show(requireActivity().supportFragmentManager, bottomSheetFragment.tag)

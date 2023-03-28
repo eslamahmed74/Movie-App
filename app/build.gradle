@@ -108,8 +108,8 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
+    //circular image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 }
-//kapt {
-//    correctErrorTypes true
-//}

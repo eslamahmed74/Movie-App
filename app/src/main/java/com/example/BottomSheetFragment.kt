@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +20,7 @@ import com.example.movieapp.utils.Constants
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -26,8 +28,8 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var imageUrl: String
     private lateinit var overView: String
     private lateinit var binding: SmallLayoutMovieDetailBinding
+    private val viewModel: MyListViewModel by activityViewModels()
 
-    private val viewModel:MyListViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,22 +50,25 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         setImageFromUrl(imageUrl, binding.movieImageSmallDetail)
         binding.movieDescriptionSmallDetail.text = overView
         binding.btnMylistSmallDetail.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                var database = MovieListDataBase.createRoomInstance(activity?.applicationContext!!)
-                database.movieDao()
-                    .insertMovie(
-                        MovieEntity(
-                            name = title,
-                            imgUrl = imageUrl,
-                            overView = overView
-                        )
-                    )
-            }
+            insertData(
+                MovieEntity(
+                    name = title,
+                    imgUrl = imageUrl,
+                    overView = overView
+                )
+            )
         }
-        binding.btnDownloadSmallDetail.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO){
-                var database = MovieListDataBase.createRoomInstance(activity?.applicationContext!!)
-                Log.e("TAG4",database.movieDao().getMovieFromRoom().toString())
+
+    }
+
+    private fun insertData(item: MovieEntity) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            var database = MovieListDataBase.createRoomInstance(activity?.applicationContext!!)
+            viewModel.addItemToDataBase(
+                item
+            )
+            withContext(Dispatchers.Main) {
+                Toast.makeText(requireContext(), "added", Toast.LENGTH_SHORT).show()
             }
         }
     }

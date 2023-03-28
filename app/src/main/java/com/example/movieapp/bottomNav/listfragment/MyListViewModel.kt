@@ -10,6 +10,7 @@ import com.example.movieapp.Repository
 import com.example.movieapp.utils.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -26,8 +27,24 @@ class MyListViewModel @Inject constructor(private val repository: Repository) : 
         getMovieList()
     }
 
+    fun getAll(): List<MovieEntity>? {
+        return _movieFromDataBase.value.toData()
+    }
+
+    fun deleteItemFromList(id: Int): State<List<MovieEntity>> {
+        viewModelScope.launch {
+            repository.deleteItemFromMoviesList(id)
+            _movieFromDataBase.value = repository.getMoviesList()
+        }
+        return _movieFromDataBase.value
+    }
+
     fun addItemToDataBase(item: MovieEntity) {
-        _movieFromDataBase.value = State.Success(listOf(item))
+        viewModelScope.launch {
+            repository.addDataToDataBase(item)
+            _movieFromDataBase.value = repository.getMoviesList()
+        }
+
     }
 
     fun getItemFromDataBase(): MutableStateFlow<State<List<MovieEntity>>> {
@@ -38,6 +55,5 @@ class MyListViewModel @Inject constructor(private val repository: Repository) : 
         viewModelScope.launch {
             _movieFromDataBase.value = repository.getMoviesList()
         }
-        Log.e("TAG1", _movieFromDataBase.value.toString())
     }
 }
