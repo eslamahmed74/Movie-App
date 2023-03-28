@@ -21,20 +21,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/exit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout3"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <ImageView-->
+<!--            android:layout_width="@dimen/_30sdp"-->
+<!--            android:layout_height="@dimen/_30sdp"-->
+<!--            android:layout_marginTop="@dimen/_10sdp"-->
+<!--            android:src="@drawable/exit"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/linearLayout3"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="@dimen/_210sdp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="@+id/movie_image_small_detail"
             app:layout_constraintStart_toEndOf="@+id/movie_image_small_detail"
             app:layout_constraintTop_toTopOf="parent">
@@ -54,14 +55,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:text="Drama.Thriller.Sex"
+                android:text="Drama.Thriller.+18"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_8sdp" />
 
             <TextView
                 android:id="@+id/movie_description_small_detail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_margin="@dimen/_10sdp"
                 android:text="Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia"
                 android:textColor="@color/white"

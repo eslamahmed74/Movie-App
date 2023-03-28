@@ -1,3 +1,5 @@
 package com.example.movieapp.bottomNav.listfragment
 
-data class ListItem(var image:Int,var name:String)
+import java.net.IDN
+
+data class ListItem(var id:Int,var image:Int,var name:String)

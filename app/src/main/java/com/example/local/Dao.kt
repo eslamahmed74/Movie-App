@@ -2,6 +2,7 @@ package com.example.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import retrofit2.Response
@@ -14,4 +15,7 @@ interface Dao {
 
     @Query("select * from myMoviesList order by id desc")
     suspend fun getMovieFromRoom(): List<MovieEntity>
+
+    @Query("delete from myMoviesList where id = :id")
+    suspend fun deleteById(id: Int)
 }
