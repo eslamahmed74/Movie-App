@@ -41,9 +41,12 @@ class Repository(private val dataBaseDao: Dao) {
         return wrapWithFlow(apiServices::getTvPopular)
     }
 
-    suspend fun getMoviesList(): LiveData<List<MovieEntity>> {
-        Log.e("TAG2",dataBaseDao.getMovieFromRoom().value.toString())
-        return dataBaseDao.getMovieFromRoom()
+    suspend fun getMoviesList(): State<List<MovieEntity>> {
+        val result=dataBaseDao.getMovieFromRoom()
+        return if (result.isNotEmpty())
+            State.Success(result)
+        else
+            State.Error("there is no data")
     }
 }
 

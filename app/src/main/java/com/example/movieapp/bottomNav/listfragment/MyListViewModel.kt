@@ -10,6 +10,7 @@ import com.example.movieapp.Repository
 import com.example.movieapp.utils.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,17 +18,25 @@ import javax.inject.Inject
 @HiltViewModel
 class MyListViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private val _movieFromDataBase = MutableLiveData<List<MovieEntity>>()
-    val movieFromDataBase: LiveData<List<MovieEntity>>
+    private val _movieFromDataBase = MutableStateFlow<State<List<MovieEntity>>>(State.Loading)
+    val movieFromDataBase: MutableStateFlow<State<List<MovieEntity>>>
         get() = _movieFromDataBase
 
     init {
         getMovieList()
     }
 
+    fun addItemToDataBase(item: MovieEntity) {
+        _movieFromDataBase.value = State.Success(listOf(item))
+    }
+
+    fun getItemFromDataBase(): MutableStateFlow<State<List<MovieEntity>>> {
+        return _movieFromDataBase
+    }
+
     private fun getMovieList() {
         viewModelScope.launch {
-            _movieFromDataBase.value = repository.getMoviesList().value
+            _movieFromDataBase.value = repository.getMoviesList()
         }
         Log.e("TAG1", _movieFromDataBase.value.toString())
     }

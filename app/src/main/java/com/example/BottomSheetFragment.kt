@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.local.MovieEntity
 import com.example.local.MovieListDataBase
 import com.example.movieapp.R
+import com.example.movieapp.bottomNav.listfragment.MyListViewModel
 import com.example.movieapp.databinding.SmallLayoutMovieDetailBinding
 import com.example.movieapp.utils.Constants
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -24,6 +26,8 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var imageUrl: String
     private lateinit var overView: String
     private lateinit var binding: SmallLayoutMovieDetailBinding
+
+    private val viewModel:MyListViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,6 +58,12 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
                             overView = overView
                         )
                     )
+            }
+        }
+        binding.btnDownloadSmallDetail.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO){
+                var database = MovieListDataBase.createRoomInstance(activity?.applicationContext!!)
+                Log.e("TAG4",database.movieDao().getMovieFromRoom().toString())
             }
         }
     }

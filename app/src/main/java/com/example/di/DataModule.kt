@@ -20,7 +20,7 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideDataBase( context: Application): MovieListDataBase {
+    fun provideDataBase(context: Application): MovieListDataBase {
         return MovieListDataBase.createRoomInstance(context)
     }
 
