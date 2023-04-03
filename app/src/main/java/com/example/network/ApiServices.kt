@@ -22,7 +22,7 @@ interface ApiServices {
         @Query("api_key") apiKey: String
     ): Response<MovieResponse?>
 
-    @GET("/tv/popular")
+    @GET("movie/now_playing")
     suspend fun getTvPopular(
         @Query("api_key") apiKey: String
     ): Response<MovieResponse?>

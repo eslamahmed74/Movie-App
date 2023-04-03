@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
+        android:id="@+id/container"
         tools:context=".bottomNav.listfragment.ListFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -47,7 +48,7 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btn_back_SignUp"
+                android:id="@+id/btn_search"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_150sdp"
