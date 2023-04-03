@@ -37,7 +37,7 @@ class PopularMovieViewModel @Inject constructor(private val repository:Repositor
     val tvPopular: StateFlow<State<MovieResponse?>>
         get() = _upComingMovie
 
-    private fun getMovies() {
+     fun getMovies() {
         viewModelScope.launch {
 
             async {

@@ -18,4 +18,7 @@ interface Dao {
 
     @Query("delete from myMoviesList where id = :id")
     suspend fun deleteById(id: Int)
+
+    @Query("select * from myMoviesList where name like :query")
+    suspend fun searchQuery(query:String):List<MovieEntity>
 }

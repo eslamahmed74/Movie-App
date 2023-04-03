@@ -1,10 +1,7 @@
 package com.example.movieapp.bottomNav.mainfragment.popularmovie
 
 import com.example.movieapp.utils.BaseAdapter
-import com.example.movieapp.utils.BaseClickListener
-import com.example.movieapp.Movie
 import com.example.movieapp.R
-import com.example.network.MovieResponse
 import com.example.network.Result
 
 /*

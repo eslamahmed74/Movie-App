@@ -1,18 +1,12 @@
 package com.example.movieapp.bottomNav.listfragment
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.local.MovieEntity
 import com.example.movieapp.Repository
 import com.example.movieapp.utils.State
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -34,7 +28,7 @@ class MyListViewModel @Inject constructor(private val repository: Repository) : 
     fun deleteItemFromList(id: Int): State<List<MovieEntity>> {
         viewModelScope.launch {
             repository.deleteItemFromMoviesList(id)
-            _movieFromDataBase.value = repository.getMoviesList()
+            _movieFromDataBase.value = repository.getMoviesListFromDataBase()
         }
         return _movieFromDataBase.value
     }
@@ -42,7 +36,7 @@ class MyListViewModel @Inject constructor(private val repository: Repository) : 
     fun addItemToDataBase(item: MovieEntity) {
         viewModelScope.launch {
             repository.addDataToDataBase(item)
-            _movieFromDataBase.value = repository.getMoviesList()
+            _movieFromDataBase.value = repository.getMoviesListFromDataBase()
         }
 
     }
@@ -53,7 +47,7 @@ class MyListViewModel @Inject constructor(private val repository: Repository) : 
 
     private fun getMovieList() {
         viewModelScope.launch {
-            _movieFromDataBase.value = repository.getMoviesList()
+            _movieFromDataBase.value = repository.getMoviesListFromDataBase()
         }
     }
 }

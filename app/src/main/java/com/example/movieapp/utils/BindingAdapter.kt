@@ -41,3 +41,12 @@ fun <T> showWhenSuccess(view: View, state: State<T>?){
         view.visibility = View.GONE
     }
 }
+
+@BindingAdapter(value = ["app:showWhenError"])
+fun <T> showWhenError(view: View, state: State<T>?) {
+    if (state is State.Error) {
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.GONE
+    }
+}
